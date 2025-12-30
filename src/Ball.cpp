@@ -2,7 +2,7 @@
 #include "Ball.hpp"
 #include <cstring>
 
-Ball::Ball(int x_, int y_, float radius_, SDL_Color color_, char name_[64], double gravity_, SDL_Renderer *renderer_, bool shown_, bool enabled_, SDL_Color backgroundColor_)
+Ball::Ball(double x_, double y_, float radius_, SDL_Color color_, char name_[64], double gravity_, SDL_Renderer *renderer_, bool shown_, bool enabled_, SDL_Color backgroundColor_, double airResistance_)
 {
   x = x_;
   y = y_;
@@ -17,6 +17,7 @@ Ball::Ball(int x_, int y_, float radius_, SDL_Color color_, char name_[64], doub
   gravity = gravity_;
   shown = shown_;
   enabled = enabled_;
+  airResistance = airResistance_;
 
   renderer = renderer_;
 }
@@ -36,8 +37,6 @@ void Ball::display()
 void Ball::update(double deltaTime)
 {
   yVelocity += gravity;
-  y += yVelocity * deltaTime;
-  x += xVelocity * deltaTime;
 
   if (y + radius >= 600)
   {
@@ -62,6 +61,9 @@ void Ball::update(double deltaTime)
     x = 0 + radius;
     xVelocity = -xVelocity * restitution;
   }
+
+  x += (xVelocity * deltaTime * airResistance);
+  y += (yVelocity * deltaTime * airResistance);
 }
 
 void Ball::applyXvelocity(int intensity)
