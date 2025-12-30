@@ -2,6 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include "Ball.hpp"
+#include "Rectangle.hpp"
 
 int main()
 {
@@ -23,6 +24,10 @@ int main()
   SDL_Color mainBallColor = {255, 255, 255, 255};
 
   Ball mainBall = Ball(500, 50, 20, mainBallColor, ballName, 9.81, renderer, true, true, background_color, 0.9);
+
+  char rectName[] = "Rect 1";
+  SDL_Color rectColor = {200, 50, 50, 255};
+  Rectangle mainRect = Rectangle(300, 300, 100, 50, rectColor, rectName, 0, renderer, true, true, background_color, 0);
 
   const int FPS = 60;
   const int frameDelay = 1000 / FPS;
@@ -103,6 +108,7 @@ int main()
     SDL_SetRenderDrawColor(renderer, background_color.r, background_color.g, background_color.b, background_color.a);
     SDL_RenderClear(renderer);
     mainBall.display();
+    mainRect.display();
     SDL_RenderPresent(renderer);
 
     Uint32 currentTime = SDL_GetTicks();
