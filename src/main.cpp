@@ -22,7 +22,7 @@ int main()
 
   SDL_Color mainBallColor = {255, 0, 0, 255};
 
-  Ball mainBall = Ball(500, 50, 20, mainBallColor, ballName, 9.81, renderer, true, true, background_color);
+  Ball mainBall = Ball(500, 50, 20, mainBallColor, ballName, 9.81, renderer, true, true, background_color, 0.9);
 
   const int FPS = 24;
   const int frameDelay = 1000 / FPS;
@@ -97,7 +97,8 @@ int main()
     if (applyPositiveYVel)
       mainBall.applyYvelocity(50);
 
-    mainBall.update(deltaTime);
+    for (int i = 0; i < speedSimulationMultiplier; i++)
+      mainBall.update(deltaTime);
 
     SDL_SetRenderDrawColor(renderer, background_color.r, background_color.g, background_color.b, background_color.a);
     SDL_RenderClear(renderer);
