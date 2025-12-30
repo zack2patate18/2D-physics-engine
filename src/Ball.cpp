@@ -44,7 +44,7 @@ void Ball::update(double deltaTime)
     yVelocity = -yVelocity * restitution;
   }
 
-  if (y + radius <= 0)
+  if (y - radius <= 0)
   {
     y = 0 + radius;
     yVelocity = -yVelocity * restitution;
@@ -56,7 +56,7 @@ void Ball::update(double deltaTime)
     xVelocity = -xVelocity * restitution;
   }
 
-  if (x + radius <= 0)
+  if (x - radius <= 0)
   {
     x = 0 + radius;
     xVelocity = -xVelocity * restitution;

@@ -20,11 +20,11 @@ int main()
 
   char ballName[] = "Ball 1";
 
-  SDL_Color mainBallColor = {255, 0, 0, 255};
+  SDL_Color mainBallColor = {255, 255, 255, 255};
 
   Ball mainBall = Ball(500, 50, 20, mainBallColor, ballName, 9.81, renderer, true, true, background_color, 0.9);
 
-  const int FPS = 24;
+  const int FPS = 60;
   const int frameDelay = 1000 / FPS;
 
   Uint32 lastTime = SDL_GetTicks();
