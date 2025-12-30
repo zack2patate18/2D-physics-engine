@@ -1,0 +1,4 @@
+.vscode
+builds
+CMakeLists.txt
+*.dll
